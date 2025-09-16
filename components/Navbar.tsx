@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
 <Link href="/">          <Image src="/logo.png" alt="Logo" width={120} height={120} />
 </Link>
-          <span className="border-l-2 border-gray-600 pl-2 text-base font-semibold text-gray-700">
+          <span className="border-l-2 border-gray-500 pl-2 text-base font-semibold text-gray-700">
             for Business
           </span>
         </div>

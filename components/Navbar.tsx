@@ -37,7 +37,7 @@ export default function Navbar() {
 <Link href="/">          <Image src="/logo.png" alt="Logo" width={120} height={120} />
 </Link>
           <span className="border-l-2 border-gray-500 pl-2 text-base font-semibold text-gray-700">
-            for Business
+            For Business
           </span>
         </div>
 

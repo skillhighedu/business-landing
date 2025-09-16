@@ -61,7 +61,7 @@ export default function LeadForm() {
             something amazing together!
           </p>
           <ul className="space-y-2 text-gray-700">
-            <li>📍 Hyderabad, India</li>
+            <li>📍 Hyderabad,India</li>
             <li>📞 +91 91826 61204</li>
             <li>✉️ business.skillhigh@gmail.com</li>
           </ul>

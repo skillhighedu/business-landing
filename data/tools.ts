@@ -9,7 +9,7 @@ export const categories = [
         name: "Student Dashboard",
         description:
           "Track progress, manage courses, and stay on top of learning with our interactive student dashboard.",
-        image: ["/images/student-dashboard.png"],
+        image: ["/images/student-dashboards.png"],
         features: [
           "Track course progress and completion",
           "View Projects and assignments",

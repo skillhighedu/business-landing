@@ -14,6 +14,9 @@ export async function POST(req: Request) {
       );
     }
 
+    console.log(process.env.EMAIL_USER, process.env.EMAIL_PASS ? "✅ loaded" : "❌ missing");
+
+
     // Create transporter
     const transporter = nodemailer.createTransport({
       service: "gmail", // You can use any SMTP (e.g., SendGrid, Outlook)

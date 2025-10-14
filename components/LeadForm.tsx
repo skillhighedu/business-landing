@@ -49,9 +49,9 @@ export default function LeadForm() {
 
       console.log("✅ Server response:", res);
       alert("Message sent successfully!");
-    } catch (err: any) {
-      console.error("❌ Error:", err.response?.data || err.message);
-      alert("Error: " + (err.response?.data?.error || "Something went wrong"));
+    } catch (error) {
+     console.error("❌ Submission error:", error);
+   
     } finally {
       setLoading(false);
     }

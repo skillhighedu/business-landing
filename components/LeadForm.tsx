@@ -4,7 +4,7 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,6 +31,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function LeadForm() {
+  const [loading,setLoading] = React.useState(false);
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,9 +42,19 @@ export default function LeadForm() {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    console.log("Form Submitted:", values);
-    // 👉 send to API, Resend, Mailchimp, etc.
+  async function onSubmit(values: FormValues) {
+   try {
+    setLoading(true);
+     const res = await axios.post("http://localhost:3000/api/contacts", values);
+
+      console.log("✅ Server response:", res);
+      alert("Message sent successfully!");
+    } catch (err: any) {
+      console.error("❌ Error:", err.response?.data || err.message);
+      alert("Error: " + (err.response?.data?.error || "Something went wrong"));
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -134,8 +145,8 @@ export default function LeadForm() {
                 )}
               />
 
-            <Button type="submit" className="w-full bg-green-800 text-white text-base sm:text-md px-4 py-5 hover:bg-primary pixel-border shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] transition-all duration-300 transform hover:-translate-y-1 focus:outline-none flex items-center gap-2 cursor-pointer">
-          Submit
+            <Button disabled={loading} type="submit" className="w-full bg-green-800 text-white text-base sm:text-md px-4 py-5 hover:bg-primary pixel-border shadow-[4px_4px_0_#000] hover:shadow-[6px_6px_0_#000] transition-all duration-300 transform hover:-translate-y-1 focus:outline-none flex items-center gap-2 cursor-pointer">
+          {loading ? "Sending..." : "Send Message"}
         </Button>
             </form>
           </Form>

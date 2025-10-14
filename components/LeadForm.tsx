@@ -45,7 +45,7 @@ export default function LeadForm() {
   async function onSubmit(values: FormValues) {
    try {
     setLoading(true);
-     const res = await axios.post("http://localhost:3000/api/contacts", values);
+     const res = await axios.post("https://business.skillhigh.in/api/contacts", values);
 
       console.log("✅ Server response:", res);
       alert("Message sent successfully!");
